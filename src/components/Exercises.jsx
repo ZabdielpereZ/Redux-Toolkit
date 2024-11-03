@@ -1,22 +1,23 @@
 
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addExercise, deleteExercise } from "./exerciseSlice";
+import { addItem, deleteItem } from "../features/exerciseLogSlice"
 
 const Exercises = () => {
     
-    const exercises = useSelector((state) => state.exercises);
+    const exercises = useSelector((state) => state.exerciseLog.exerciseLog);
     
     const dispatch = useDispatch();
     const [exercise, setExercise] = useState({
     type: "",
+    id: Date.now(),
     duration: "",
     calories: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addExercise(exercise));
+    dispatch(addItem(exercise));
     setExercise({ type: "", duration: "", calories: "" });
   };
   
@@ -59,7 +60,7 @@ const Exercises = () => {
             <li key={index}>
             {" "}
             {exercise.type} - {exercise.duration} mins - {exercise.calories} cal{" "}
-            <button onClick={() => dispatch(deleteExercise(index))}>
+            <button onClick={() => dispatch(deleteItem(exercise))}>
               Delete
             </button>{" "}
           </li>

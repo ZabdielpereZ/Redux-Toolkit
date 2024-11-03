@@ -21,12 +21,12 @@ export const exerciseLogSlice = createSlice ({
     reducers: {
         // Todo: adding exercise ✅
          addItem: (state, action) => {
-            console.log('add item reducer')
-
+          console.log(action.payload)
+          state.exerciseLog.push(action.payload);
          },
         // Todo: deleting exercise ✅
         deleteItem: (state, action) => {
-          console.log('delete item reducer')
+          state.exerciseLog = state.exerciseLog.filter((exercise) => exercise.id != action.payload.id)
 
         }
     }

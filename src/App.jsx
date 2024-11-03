@@ -2,7 +2,7 @@ import { Provider } from "react-redux"
 import { store } from "./store"
 import Home from './components/Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Exercises from "./components/Exercises";
+import Exercises from "./components/Exercises";
 
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />}/>
-        {/* <Route path="/exercises" element={<Exercises />}/> */}
+        <Route path="/exercises" element={<Exercises />}/>
       </Routes>
       </BrowserRouter>
     </Provider>
